@@ -12,6 +12,7 @@ This Laravel 8 application provides a user-friendly interface for searching and 
 - [Cloning the Project](#cloning-the-project)
 - [Setting Up the Environment](#setting-up-the-environment)
 - [Running the Application](#running-the-application)
+- [Importing Database](#(important)-import-database-data)
 - [Usage](#usage)
 - [License](#license)
 
