@@ -1,8 +1,5 @@
-## Screenshot
 
-![Project Screenshot](./public/images/laravelbanner1.jpg)
-
-# Laravel Simple Search and Category Filter
+# Laravel Dummy Test
 This Laravel 8 application provides a user-friendly interface for searching and filtering items based on categories. It enables users to easily find specific items through a straightforward search bar and refine their results using category filters. This README provides instructions on how to clone the project and run it locally using XAMPP or WAMP.
 
 
@@ -53,6 +50,11 @@ Before you begin, ensure you have met the following requirements:
 3. Run the migrations to set up the database tables:
 ```bash
    php artisan migrate
+```
+
+3. Run the Storage Symlink for images and assets:
+```bash
+   php artisan storage:link
 ```
 
 ---
