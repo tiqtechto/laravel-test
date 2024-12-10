@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2024 at 05:05 PM
+-- Generation Time: Dec 10, 2024 at 10:35 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -21,29 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `_115quicklly`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'All', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'Love & Relationship', '2024-10-11 11:59:38', '2024-10-11 11:59:38'),
-(5, 'Good Health', '2024-10-11 11:59:38', '2024-10-11 11:59:38'),
-(6, 'Children', '2024-10-11 11:59:38', '2024-10-11 11:59:38');
 
 -- --------------------------------------------------------
 
@@ -82,8 +59,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2024_10_11_114719_create_categories_table', 1),
-(6, '2024_10_11_115333_create_pujas_table', 1);
+(5, '2024_12_10_081554_create_roles_table', 1);
 
 -- --------------------------------------------------------
 
@@ -118,33 +94,22 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pujas`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE `pujas` (
+CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
-  `price_range_start` int(11) NOT NULL,
-  `price_range_end` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `pujas`
+-- Dumping data for table `roles`
 --
 
-INSERT INTO `pujas` (`id`, `name`, `image`, `category_id`, `price_range_start`, `price_range_end`, `created_at`, `updated_at`) VALUES
-(2, 'sindurmani rati kamdev puja', 'images/pujas/auspicious-4151153_640.jpg', 4, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(3, 'sindurmani rati manmadha pujan', 'images/pujas/diya-2764867_640.jpg', 4, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(4, 'Ardhanarishvara puja', 'images/pujas/marriage-3443337_640.jpg', 4, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(5, 'Gauri Shankar puja', 'images/pujas/pooja-2725137_640.jpg', 4, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(6, 'no one good health', 'images/goodhealth/health-4861815_1280.jpg', 5, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(7, 'no two good health', 'images/goodhealth/hypertension-867855_640.jpg', 5, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(8, 'no one child', 'images/children/children-5833685_640.jpg', 6, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40'),
-(9, 'no two child', 'images/children/desert-7008952_1280.jpg', 6, 130, 140, '2024-10-11 12:17:40', '2024-10-11 12:17:40');
+INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'DummyRole', '2024-12-10 03:37:36', '2024-12-10 03:37:36');
 
 -- --------------------------------------------------------
 
@@ -154,27 +119,26 @@ INSERT INTO `pujas` (`id`, `name`, `image`, `category_id`, `price_range_start`, 
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `verification_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `invite_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `profile_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `users`
 --
 
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `description`, `role_id`, `profile_image`, `created_at`, `updated_at`) VALUES
+(1, 'Abhijeet singh', '1234singhsolanki@gmail.com', '8824479751', NULL, 1, 'profile_images/G6v5ztyr3EwtFBb82mn2xGwp6gpb7RqdGKqSQBTJ.jpg', '2024-12-10 04:01:12', '2024-12-10 04:01:12');
+
 --
--- Indexes for table `categories`
+-- Indexes for dumped tables
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -204,30 +168,23 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `pujas`
+-- Indexes for table `roles`
 --
-ALTER TABLE `pujas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pujas_category_id_foreign` (`category_id`);
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_username_unique` (`username`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD UNIQUE KEY `users_phone_unique` (`phone`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD KEY `users_role_id_foreign` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -239,7 +196,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -248,26 +205,26 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pujas`
+-- AUTO_INCREMENT for table `roles`
 --
-ALTER TABLE `pujas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `pujas`
+-- Constraints for table `users`
 --
-ALTER TABLE `pujas`
-  ADD CONSTRAINT `pujas_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

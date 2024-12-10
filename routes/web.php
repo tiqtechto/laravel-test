@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('get-data', [DashboardController::class, 'getData']); 
+Route::get('/', [UserController::class, 'usersView']);
+
+
 

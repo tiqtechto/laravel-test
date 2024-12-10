@@ -17,14 +17,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'email',
-        'username',
-        'phone',
-        'verification_code',
-        'password',
-        'invite_code',
-    ];
+
+    protected $fillable = ['name', 'email', 'phone', 'description', 'role_id', 'profile_image', 'verification_code',
+    'password',
+    'invite_code'];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
