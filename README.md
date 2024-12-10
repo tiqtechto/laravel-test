@@ -78,5 +78,5 @@ Before you begin, ensure you have met the following requirements:
 1. Start your XAMPP or WAMP server and ensure the Apache and MySQL services are running.
 2. Copy this link past and let's go.
 ```bash
-   http://localhost/quicklly/
+   http://localhost/laravel-test/
 ```
